@@ -5,17 +5,17 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 88%;
+    --background: 225 97% 12%; /* #00113a */
+    --foreground: 60 29% 85%; /* #e8e5c3 */
     
-    --primary: 210 87% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 357 96% 28%; /* #890304 */
+    --primary-foreground: 60 29% 85%; /* #e8e5c3 */
     
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 225 97% 20%; /* #002263 */
+    --secondary-foreground: 60 49% 84%; /* #f8f2bf */
     
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 225 97% 20%; /* #002263 */
+    --accent-foreground: 60 29% 85%; /* #e8e5c3 */
   }
 
   body {
@@ -26,22 +26,22 @@
 /* Dark theme utilities */
 @layer utilities {
   .dark-glass {
-    @apply backdrop-blur-xl bg-black/50 border border-white/10 shadow-dark-lg;
+    @apply backdrop-blur-xl bg-background/50 border border-primary/10 shadow-truth-glow;
   }
   
   .glow-effect {
-    @apply transition-all duration-300 hover:shadow-[0_0_15px_#3498db];
+    @apply transition-all duration-300 hover:shadow-truth-glow;
   }
   
   .text-gradient-dark {
-    @apply bg-gradient-to-br from-white via-gray-300 to-gray-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent;
   }
 }
 
 /* Custom scrollbar for dark theme */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3498db #0A0A0F;
+  scrollbar-color: #890304 #00113a;
 }
 
 *::-webkit-scrollbar {
@@ -49,10 +49,10 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: #0A0A0F;
+  background: #00113a;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #3498db;
+  background-color: #890304;
   border-radius: 20px;
 }
