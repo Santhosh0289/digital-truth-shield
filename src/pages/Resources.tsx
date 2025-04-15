@@ -18,23 +18,24 @@ const Resources = () => {
           <SectionHeading
             title="Educational Resources"
             description="Learn more about deepfake technology, its implications, and how to protect yourself and your organization."
+            className="text-foreground"
           />
           
           <Tabs defaultValue="articles" className="mt-12">
-            <TabsList className="grid w-full grid-cols-1 md:grid-cols-4 mb-8">
-              <TabsTrigger value="articles">
+            <TabsList className="grid w-full grid-cols-1 md:grid-cols-4 mb-8 bg-background border border-primary/20">
+              <TabsTrigger value="articles" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 <FileText className="h-4 w-4 mr-2" />
                 Articles
               </TabsTrigger>
-              <TabsTrigger value="guides">
+              <TabsTrigger value="guides" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 <Book className="h-4 w-4 mr-2" />
                 Guides
               </TabsTrigger>
-              <TabsTrigger value="videos">
+              <TabsTrigger value="videos" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 <Video className="h-4 w-4 mr-2" />
                 Videos
               </TabsTrigger>
-              <TabsTrigger value="research">
+              <TabsTrigger value="research" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                 <ExternalLink className="h-4 w-4 mr-2" />
                 Research Papers
               </TabsTrigger>
@@ -86,22 +87,22 @@ const Resources = () => {
                     readTime: "11 min read"
                   }
                 ].map((article, index) => (
-                  <Card key={index} className="overflow-hidden">
-                    <div className={`h-48 ${article.image}`}></div>
+                  <Card key={index} className="bg-accent text-accent-foreground border-primary/20">
+                    <div className={`h-48 ${article.image} opacity-90`}></div>
                     <CardHeader>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-truth-100 text-truth-800">
+                        <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-primary/20 text-foreground">
                           {article.category}
                         </span>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-foreground/70">
                           {article.readTime}
                         </span>
                       </div>
-                      <CardTitle>{article.title}</CardTitle>
-                      <CardDescription>{article.description}</CardDescription>
+                      <CardTitle className="text-foreground">{article.title}</CardTitle>
+                      <CardDescription className="text-foreground/80">{article.description}</CardDescription>
                     </CardHeader>
                     <CardFooter>
-                      <Button variant="ghost" className="p-0 h-auto" size="sm">
+                      <Button variant="secondary" size="sm" className="hover:bg-primary hover:text-primary-foreground">
                         Read Article <ArrowRight className="ml-2 h-3 w-3" />
                       </Button>
                     </CardFooter>
@@ -166,26 +167,26 @@ const Resources = () => {
                     ]
                   }
                 ].map((guide, index) => (
-                  <Card key={index}>
+                  <Card key={index} className="bg-accent text-accent-foreground border-primary/20">
                     <CardHeader>
                       <div className="mb-4">{guide.icon}</div>
-                      <CardTitle>{guide.title}</CardTitle>
-                      <CardDescription>{guide.description}</CardDescription>
+                      <CardTitle className="text-foreground">{guide.title}</CardTitle>
+                      <CardDescription className="text-foreground/80">{guide.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <ol className="space-y-2">
                         {guide.steps.map((step, stepIndex) => (
                           <li key={stepIndex} className="flex items-start gap-2">
-                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-truth-100 text-truth-600 text-xs font-medium shrink-0">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/20 text-foreground text-xs font-medium shrink-0">
                               {stepIndex + 1}
                             </span>
-                            <span>{step}</span>
+                            <span className="text-foreground/90">{step}</span>
                           </li>
                         ))}
                       </ol>
                     </CardContent>
                     <CardFooter>
-                      <Button variant="outline" className="w-full">
+                      <Button variant="secondary" className="w-full hover:bg-primary hover:text-primary-foreground">
                         <Download className="mr-2 h-4 w-4" />
                         Download Full Guide (PDF)
                       </Button>
@@ -236,23 +237,23 @@ const Resources = () => {
                   }
                 ].map((video, index) => (
                   <div key={index} className="group">
-                    <div className={`aspect-video rounded-lg overflow-hidden relative ${video.thumbnail}`}>
+                    <div className={`aspect-video rounded-lg overflow-hidden relative ${video.thumbnail} bg-accent border border-primary/20`}>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center transition-transform group-hover:scale-110">
+                        <div className="w-16 h-16 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center transition-transform group-hover:scale-110">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
                           </svg>
                         </div>
                       </div>
-                      <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                      <div className="absolute bottom-2 right-2 bg-background/80 text-foreground text-xs px-2 py-1 rounded">
                         {video.duration}
                       </div>
                     </div>
                     <div className="mt-3">
-                      <h3 className="font-medium text-lg group-hover:text-truth-600 transition-colors">
+                      <h3 className="font-medium text-lg text-foreground group-hover:text-primary transition-colors">
                         {video.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
+                      <p className="text-sm text-foreground/70 mt-1">
                         {video.views} views • DigitalTruthShield
                       </p>
                     </div>
@@ -261,7 +262,7 @@ const Resources = () => {
               </div>
               
               <div className="flex justify-center mt-8">
-                <Button variant="outline">
+                <Button variant="secondary" className="hover:bg-primary hover:text-primary-foreground">
                   View All Videos
                 </Button>
               </div>
@@ -306,25 +307,25 @@ const Resources = () => {
                     abstract: "This paper explores various fusion techniques for combining visual and audio analysis in deepfake detection. We demonstrate that attention-based late fusion strategies significantly outperform traditional methods when dealing with mixed-quality media samples."
                   }
                 ].map((paper, index) => (
-                  <div key={index} className="bg-background rounded-lg border p-6">
-                    <h3 className="font-bold text-xl mb-2">{paper.title}</h3>
+                  <div key={index} className="bg-accent rounded-lg border border-primary/20 p-6">
+                    <h3 className="font-bold text-xl mb-2 text-foreground">{paper.title}</h3>
                     <div className="flex flex-wrap gap-y-2 mb-4">
-                      <div className="text-sm text-muted-foreground flex-grow">
+                      <div className="text-sm text-foreground/80 flex-grow">
                         <span>{paper.authors}</span>
                       </div>
                       <div className="text-sm">
-                        <span className="text-truth-600 font-medium">{paper.publication}</span>
-                        <span className="text-muted-foreground ml-2">{paper.year}</span>
+                        <span className="text-primary font-medium">{paper.publication}</span>
+                        <span className="text-foreground/70 ml-2">{paper.year}</span>
                       </div>
                     </div>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-foreground/80 mb-4">
                       {paper.abstract}
                     </p>
                     <div className="flex gap-3">
-                      <Button variant="outline" size="sm">
+                      <Button variant="secondary" size="sm" className="hover:bg-primary hover:text-primary-foreground">
                         View PDF
                       </Button>
-                      <Button variant="ghost" size="sm">
+                      <Button variant="outline" size="sm" className="hover:bg-primary/20">
                         Cite
                       </Button>
                     </div>
