@@ -2,61 +2,136 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
-  prefix: "",
-  theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px'
-      }
-    },
-    extend: {
-      colors: {
-        // Custom color palette
-        truth: {
-          50: '#f8f2bf',
-          100: '#e8e5c3',
-          200: '#002263',
-          500: '#890304',
-          600: '#00113a',
-          700: '#002263',
-        },
-        background: {
-          DEFAULT: "#00113a",
-          secondary: "#002263",
-        },
-        foreground: {
-          DEFAULT: "#e8e5c3",
-          muted: "#f8f2bf",
-        },
-        primary: {
-          DEFAULT: "#890304",
-          dark: "#00113a",
-        },
-        accent: {
-          DEFAULT: "#002263",
-          light: "#00113a",
-        },
-        border: {
-          DEFAULT: "#890304",
-        },
-      },
-      backgroundImage: {
-        'gradient-truth': 'linear-gradient(to right, #890304, #00113a)',
-      },
-      boxShadow: {
-        'truth-glow': '0 0 15px rgba(137,3,4,0.5)',
-      }
-    }
-  },
-  plugins: [require("tailwindcss-animate")],
+	darkMode: ["class"],
+	content: [
+		"./pages/**/*.{ts,tsx}",
+		"./components/**/*.{ts,tsx}",
+		"./app/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}",
+	],
+	prefix: "",
+	theme: {
+		container: {
+			center: true,
+			padding: '2rem',
+			screens: {
+				'2xl': '1400px'
+			}
+		},
+		extend: {
+			colors: {
+				border: 'hsl(var(--border))',
+				input: 'hsl(var(--input))',
+				ring: 'hsl(var(--ring))',
+				background: 'hsl(var(--background))',
+				foreground: 'hsl(var(--foreground))',
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))'
+				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))'
+				},
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive))',
+					foreground: 'hsl(var(--destructive-foreground))'
+				},
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))'
+				},
+				popover: {
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))'
+				},
+				card: {
+					DEFAULT: 'hsl(var(--card))',
+					foreground: 'hsl(var(--card-foreground))'
+				},
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: 'hsl(var(--sidebar-border))',
+					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for our deepfake detection app
+				truth: {
+					50: '#e6f7ff',
+					100: '#cceeff',
+					200: '#99ddff',
+					300: '#66ccff',
+					400: '#33bbff',
+					500: '#00aaff',
+					600: '#0088cc',
+					700: '#006699',
+					800: '#004466',
+					900: '#002233',
+				},
+				deepfake: {
+					50: '#fff5e6',
+					100: '#ffebcc',
+					200: '#ffd699',
+					300: '#ffc266',
+					400: '#ffad33',
+					500: '#ff9900',
+					600: '#cc7a00',
+					700: '#995c00',
+					800: '#663d00',
+					900: '#331f00',
+				},
+			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
+			},
+			keyframes: {
+				'accordion-down': {
+					from: {
+						height: '0'
+					},
+					to: {
+						height: 'var(--radix-accordion-content-height)'
+					}
+				},
+				'accordion-up': {
+					from: {
+						height: 'var(--radix-accordion-content-height)'
+					},
+					to: {
+						height: '0'
+					}
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
+				},
+				'scanning': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(100%)' },
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+			},
+			animation: {
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-slow': 'pulse-slow 2s ease-in-out infinite',
+				'scanning': 'scanning 2s ease-in-out infinite alternate',
+				'fade-in': 'fade-in 0.5s ease-out',
+			}
+		}
+	},
+	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
