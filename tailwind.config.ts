@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for our deepfake detection app
+				truth: {
+					50: '#e6f7ff',
+					100: '#cceeff',
+					200: '#99ddff',
+					300: '#66ccff',
+					400: '#33bbff',
+					500: '#00aaff',
+					600: '#0088cc',
+					700: '#006699',
+					800: '#004466',
+					900: '#002233',
+				},
+				deepfake: {
+					50: '#fff5e6',
+					100: '#ffebcc',
+					200: '#ffd699',
+					300: '#ffc266',
+					400: '#ffad33',
+					500: '#ff9900',
+					600: '#cc7a00',
+					700: '#995c00',
+					800: '#663d00',
+					900: '#331f00',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +110,26 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
+				},
+				'scanning': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(100%)' },
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-slow': 'pulse-slow 2s ease-in-out infinite',
+				'scanning': 'scanning 2s ease-in-out infinite alternate',
+				'fade-in': 'fade-in 0.5s ease-out',
 			}
 		}
 	},
