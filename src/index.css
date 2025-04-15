@@ -23,7 +23,7 @@
   }
 }
 
-// Dark theme utilities
+/* Dark theme utilities */
 @layer utilities {
   .dark-glass {
     @apply backdrop-blur-xl bg-black/50 border border-white/10 shadow-dark-lg;
@@ -38,7 +38,7 @@
   }
 }
 
-// Custom scrollbar for dark theme
+/* Custom scrollbar for dark theme */
 * {
   scrollbar-width: thin;
   scrollbar-color: #3498db #0A0A0F;
